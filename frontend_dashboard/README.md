@@ -1,82 +1,59 @@
-# Lightweight React Template for KAVIA
+# Frontend Dashboard (Ocean Professional)
 
-This project provides a minimal React template with a clean, modern UI and minimal dependencies.
+A lightweight React dashboard UI for controlling Wi‑Fi mesh test runs, monitoring node health, and visualizing performance metrics.
 
-## Features
+## Navigation
 
-- **Lightweight**: No heavy UI frameworks - uses only vanilla CSS and React
-- **Modern UI**: Clean, responsive design with KAVIA brand styling
-- **Fast**: Minimal dependencies for quick loading times
-- **Simple**: Easy to understand and modify
+Sidebar sections:
+- Dashboard
+- Test Runs
+- Nodes
+- Metrics
+- Alerts
+- Settings
 
-## Getting Started
+Top bar provides quick actions (Start Test / Stop Test / Refresh), search (routes you to relevant sections), and status indicators.
 
-In the project directory, you can run:
+## Mock mode vs live mode
 
-### `npm start`
+This dashboard is **mock-first**:
+- If `REACT_APP_API_BASE` is **empty**, the UI runs in **mock mode** with realistic seeded data and periodic updates.
+- If `REACT_APP_API_BASE` is set, the UI will call the backend using `fetch()` against that base URL.
 
-Runs the app in development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Optional real-time hook:
+- If `REACT_APP_WS_URL` is set, the app attempts a native `WebSocket` connection via a minimal `connectTelemetry()` stub (no external libs).
 
-### `npm test`
+## Environment variables used (read-only display + behavior)
 
-Launches the test runner in interactive watch mode.
+These are read from `.env` and surfaced in Settings:
+- `REACT_APP_API_BASE` (controls mock vs live)
+- `REACT_APP_WS_URL`
+- `REACT_APP_FRONTEND_URL`
+- `REACT_APP_NODE_ENV`
+- `REACT_APP_FEATURE_FLAGS` (display only)
+- `REACT_APP_EXPERIMENTS_ENABLED` (display only)
 
-### `npm run build`
+## Styling
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Theme: **Ocean Professional**
+- Primary: `#2563EB`
+- Accent (secondary/success): `#F59E0B`
+- Error: `#EF4444`
+- Background: `#f9fafb`
+- Surface: `#ffffff`
+- Text: `#111827`
 
-## Customization
+Implementation uses **vanilla CSS** with CSS variables and minimal SVG charts (no charting libraries).
 
-### Colors
+## Local dev
 
-The main brand colors are defined as CSS variables in `src/App.css`:
-
-```css
-:root {
-  --kavia-orange: #E87A41;
-  --kavia-dark: #1A1A1A;
-  --text-color: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.7);
-  --border-color: rgba(255, 255, 255, 0.1);
-}
+```bash
+npm start
 ```
 
-### Components
+Open http://localhost:3000
 
-This template uses pure HTML/CSS components instead of a UI framework. You can find component styles in `src/App.css`. 
-
-Common components include:
-- Buttons (`.btn`, `.btn-large`)
-- Container (`.container`)
-- Navigation (`.navbar`)
-- Typography (`.title`, `.subtitle`, `.description`)
-
-## Learn More
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Build:
+```bash
+npm run build
+```
