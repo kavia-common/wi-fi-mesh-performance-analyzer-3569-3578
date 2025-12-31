@@ -1,0 +1,4 @@
+{
+    "command": "npm run test",
+    "working_directory": "/home/kavia/workspace/code-generation/wi-fi-mesh-performance-analyzer-3569-3578/frontend_dashboard"
+}
